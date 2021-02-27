@@ -1,0 +1,86 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimax</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            height: 100%;
+            background-color: #d1d1e0;
+            background-image: linear-gradient(#3f5efb, #fc466b);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        table,
+        td {
+            border: 15px solid black;
+            padding: 15%;
+        }
+
+        th:hover {
+            background-color: var(--colour);
+        }
+
+        table {
+            width: 30%;
+            border-collapse: collapse;
+        }
+
+        .cross {
+            display: inline-block;
+            background-color: white;
+            background-image: url(images/x.png);
+        }
+
+        .naught {
+            display: inline-block;
+            background-color: #333333;
+            background-image: url(images/0.png);
+        }
+
+        .square {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="main">
+        <table>
+            <tr>
+                <td class="square" id="0"></td>
+                <td class="square" id="1"></td>
+                <td class="square" id="2"></td>
+            </tr>
+            <tr>
+                <td class="square" id="3"></td>
+                <td class="square" id="4"></td>
+                <td class="square" id="5"></td>
+            </tr>
+            <tr>
+                <td class="square" id="6"></td>
+                <td class="square" id="7"></td>
+                <td class="square" id="8"></td>
+            </tr>
+        </table>
+
+    </div>
+    <script src="index.js"></script> 
+</body>
+
+</html>

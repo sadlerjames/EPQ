@@ -1,0 +1,91 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coloured Squares</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #d1d1e0;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        table,
+        td,
+        th {
+            border: 10px solid #333333;
+            padding: 18%;
+        }
+
+        th:hover {
+            background-color: #ff3333;
+        }
+
+        table {
+            width: 30%;
+            border-collapse: collapse;
+        }
+
+        .crosses {
+            background-color: #ff3333;
+        }
+
+        .naughts {
+            background-color: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="main">
+        <table>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </table>
+
+    </div>
+
+    <script>
+        //1 = crosses
+        //2 = naughts
+        var go = 1;
+
+        $('th').click(function () {
+            if (go == 1) {
+                console.log("hello")
+                $(this).toggleClass("crosses");
+                go = 2;
+
+            } else {
+                $(this).toggleClass("naughts");
+                go = 1;
+
+            }
+        });
+
+    </script>
+</body>
+
+</html>
