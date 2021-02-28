@@ -17,7 +17,7 @@
             background-attachment: fixed;
         }
 
-        .main {
+        .mainTable {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -27,6 +27,7 @@
         td {
             border: 15px solid black;
             padding: 15%;
+            position: relative;
         }
 
         th:hover {
@@ -55,12 +56,20 @@
             background-repeat: no-repeat;
             background-size: contain;
         }
+
+        #info {
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            width: 50%;
+        }
     </style>
 
 </head>
 
 <body>
-    <div class="main">
+    <div class="mainTable">
         <table>
             <tr>
                 <td class="square" id="0"></td>
@@ -80,6 +89,9 @@
         </table>
 
     </div>
+
+        <div id="info"></div>
+
     <script src="index.js"></script> 
 </body>
 
