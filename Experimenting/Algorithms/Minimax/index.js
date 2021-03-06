@@ -13,57 +13,42 @@ var computer = "c";
 
 $(document).ready(function () {
     $("td").click(function () {
+
         var id = $(this).attr('id');
-        if (taken(id, go)){
-            console.log("This spot is taken")
+
+        if (taken(id, go)) {
+            // Print out to screen
         } else {
-            if (go == 1) {
-                $('#' + id).css("background-image", "url(images/0.png)");
+            //set space to shape
+            $('#' + id).css("background-image", "url(images/x.png)");
+            move(go, id);
+            takeSpace(id, go)
+            go = 2;
+
+            //a slight random delay to make is more realistic for the user; i.e. computer is thinking
+            setTimeout(function () {
+                //let ai calculate best move to go and go there
                 move(go, id);
                 takeSpace(id, go)
-                go = 2;
-            } else {
-                $('#' + id).css("background-image", "url(images/x.png)");
-                move(go, id);
-                go = 1;
-            }
-        }
 
+                go = 1;
+            }, (400 + (Math.random() * 500)));
+        }
     });
 
 });
 
-//move - first to be called
+//called for each player
 function move(go, id) {
-    console.log("Go: " + go);
-    console.log("Id: " + id);
-
     if (go == 1) {
         //set the position that the human clicked on the board
         board[id] = human;
-        takenBoard[id] = human;
-        if (winning(board, human)){
-            console.log("Winner!!!");
-        }
-
-
     } else {
-        //set the position that the computer went on the board
-        board[id] = computer;
-        takenBoard[id] = computer;
-        if (winning(board, computer)){
-            console.log("Winner!!!");
-        }
-
-        
+        //let ai decide the best move to go
+        bestMove(go);
     }
-
 }
 
-//available spots
-function available(board) {
-    return board.filter(s => s != "h" && s != "c");
-  }
 
 //see if the spot that the human is about to go is taken
 function taken(id) {
@@ -80,7 +65,7 @@ function taken(id) {
 
 // take space on board
 function takeSpace(id, go) {
-    if (go == 1){
+    if (go == 1) {
         takenBoard[id] = "h";
     } else {
         takenBoard[id] = "c";
@@ -88,27 +73,90 @@ function takeSpace(id, go) {
 }
 
 
-// winning combinations
-function winning(board, player) {
-    if (
-        (board[0] == player && board[1] == player && board[2] == player) ||
-        (board[3] == player && board[4] == player && board[5] == player) ||
-        (board[6] == player && board[7] == player && board[8] == player) ||
-        (board[0] == player && board[3] == player && board[6] == player) ||
-        (board[1] == player && board[4] == player && board[7] == player) ||
-        (board[2] == player && board[5] == player && board[8] == player) ||
-        (board[0] == player && board[4] == player && board[8] == player) ||
-        (board[2] == player && board[4] == player && board[6] == player)
-    ) {
-        if (player == "c") {
-            document.getElementById('info').innerHTML = '<h1>You lost! The computer won!</h1>';
-        } else {
-            document.getElementById('info').innerHTML = '<h1>Congratulations, you won!!</h1>';
-        }
-        return true;
-    } else {
-        return false;
+//check for winner
+function winner() {
+
+    let winner = null; // no winner known yet
+
+    // Check if computer has won first row
+    if ((board[0] === computer) && (board[1] === computer) && (board[2] === computer)) {
+        winner = computer;
     }
+    // Check if computer has won second row
+    if ((board[3] === computer) && (board[4] === computer) && (board[5] === computer)) {
+        winner = computer;
+    }
+    // Check if computer has won third row
+    if ((board[6] === computer) && (board[7] === computer) && (board[8] === computer)) {
+        winner = computer;
+    }
+    // Check if computer won first column
+    if ((board[0] === computer) && (board[3] === computer) && (board[6] === computer)) {
+        winner = computer;
+    }
+
+    // Check if computer won second column
+    if ((board[1] === computer) && (board[4] === computer) && (board[7] === computer)) {
+        winner = computer;
+    }
+
+    // Check if computer won third column
+    if ((board[2] === computer) && (board[5] === computer) && (board[8] === computer)) {
+        winner = computer;
+    }
+
+    //Check if computer won diagonal (Top Left to Bottom Right)
+    if ((board[0] === computer) && (board[4] === computer) && (board[8] === computer)) {
+        winner = computer;
+    }
+
+    //Check if computer won diagonal (Top Right to Bottom Left)
+    if ((board[2] === computer) && (board[4] === computer) && (board[6] === computer)) {
+        winner = computer;
+    }
+
+    // Check if human has won first row
+    if ((board[0] === human) && (board[1] === human) && (board[2] === human)) {
+        winner = human;
+    }
+    // Check if human has won second row
+    if ((board[3] === human) && (board[4] === human) && (board[5] === human)) {
+        winner = human;
+    }
+    // Check if human has won third row
+    if ((board[6] === human) && (board[7] === human) && (board[8] === human)) {
+        winner = human;
+    }
+    // Check if human won first column
+    if ((board[0] === human) && (board[3] === human) && (board[6] === human)) {
+        winner = human;
+    }
+
+    // Check if human won second column
+    if ((board[1] === human) && (board[4] === human) && (board[7] === human)) {
+        winner = human;
+    }
+
+    // Check if human won third column
+    if ((board[2] === human) && (board[5] === human) && (board[8] === human)) {
+        winner = human;
+    }
+
+    //Check if human won diagonal
+    if ((board[0] === human) && (board[4] === human) && (board[8] === human)) {
+        winner = human;
+    }
+
+    //Check if human won diagonal
+    if ((board[2] === human) && (board[4] === human) && (board[6] === human)) {
+        winner = human;
+    }
+
+    //if no winner and the board is full return tie else return winner
+    if ((winner === null) && (board[0] != 0 && board[1] != 1 && board[2] != 2 && board[3] != 3 && board[4] != 4 && board[5] != 5 && board[6] != 6 && board[7] != 7 && board[8] != 8)) {
+        return "tie";
+    } else {
+        return winner;
+    }
+
 }
-
-
