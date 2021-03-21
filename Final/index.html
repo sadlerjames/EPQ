@@ -1,0 +1,178 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimax</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+        body {
+            height: 100%;
+            background-color: #f2f2f2;
+            font-family: 'Montserrat', sans-serif;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .title {
+            text-align: center;
+            padding: 15px;
+            font-size: 45px;
+        }
+
+        .mainTable {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px 0;
+        }
+
+        table {
+            width: 30%;
+            border: none;
+            border-collapse: collapse;
+        }
+
+        table,
+        td {
+            border: 9px solid #a6a6a6;
+            padding: 17%;
+            position: relative;
+        }
+
+        .cross {
+            display: inline-block;
+            background-color: white;
+            background-image: url(images/x.png);
+            padding: 5px;
+        }
+
+        .naught {
+            display: inline-block;
+            background-color: #333333;
+            background-image: url(images/0.png);
+        }
+
+        .square {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        #game-info {
+            text-align: center;
+            font-size: 15px;
+            line-height: 350%;
+        }
+
+        .instuctions {
+            position: absolute;
+            left: 70%;
+            top: 10%;
+
+        }
+
+        .instuctions,
+        h1 {
+            font-size: 30px;
+        }
+
+        .instuctions,
+        li {
+            font-size: 22px;
+            padding: 4px 0px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 800px) {
+
+            table,
+            td {
+                border: 9px solid #666666;
+                padding: 17%;
+                position: relative;
+            }
+
+            table {
+                width: 84%;
+                border: none;
+                border-collapse: collapse;
+
+            }
+
+            .instuctions {
+                position: relative;
+                width: 100%;
+                left: 0;
+                text-align: center;
+                top: 0%;
+
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="title">Tik-Tac-Toe</div>
+    <div class="mainTable">
+        <table>
+            <tr>
+                <td class="square" id="0"></td>
+                <td class="square" id="1"></td>
+                <td class="square" id="2"></td>
+            </tr>
+            <tr>
+                <td class="square" id="3"></td>
+                <td class="square" id="4"></td>
+                <td class="square" id="5"></td>
+            </tr>
+            <tr>
+                <td class="square" id="6"></td>
+                <td class="square" id="7"></td>
+                <td class="square" id="8"></td>
+            </tr>
+        </table>
+
+    </div>
+
+
+    <div id="game-info"></div>
+
+    <div class="instuctions">
+        <h1>How to play:</h1>
+        <ul>
+            <li>You go first</li>
+            <li>Choose a square to go and click on it</li>
+            <li>The computer will then make it's go</li>
+        </ul>
+    </div>
+
+
+    <script src="index.js"></script>
+    <script src="minimax.js"></script>
+</body>
+
+</html>

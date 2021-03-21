@@ -19,7 +19,7 @@ function bestMove(go) {
         }
     }
     board[move] = computer;
-    $('#' + move).css("background-image", "url(images/0.png)");
+    $('#' + move).css("background-image", "url(images/0-dark-blue.png)");
     takeSpace(move, go)
 }
 
