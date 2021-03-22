@@ -49,11 +49,11 @@ function move(go, id) {
             }
         }
         else if (winner() === computer) {
-            document.getElementById('game-info').innerHTML = '<h1>Computer won! Better luck next time!<br/><button onclick="reload()" class="button">Play Again <i class="fas fa-redo"></i></button></h1>';
+            document.getElementById('game-info').innerHTML = '<h1>I won! Better luck next time!<br/><button onclick="reload()" class="button">Play Again <i class="fas fa-redo"></i></button></h1>';
         } else if (winner() === human) {
             document.getElementById('game-info').innerHTML = '<h1>You won! Well done!<br/><button onclick="reload()" class="button">Play Again <i class="fas fa-redo"></i></button></h1>';
         } else {
-            document.getElementById('game-info').innerHTML = '<h1>Tie! Well played!<br/><button onclick="reload()" class="button">Play Again <i class="fas fa-redo"></i></button></h1>';
+            document.getElementById('game-info').innerHTML = '<h1>Draw! Well played!<br/><button onclick="reload()" class="button">Play Again <i class="fas fa-redo"></i></button></h1>';
         }
 
 
@@ -62,15 +62,15 @@ function move(go, id) {
             //let ai decide the best move to go
             bestMove(go);
             if (winner() === computer) {
-                document.getElementById('game-info').innerHTML = '<h1>Computer won! Better luck next time!<br/><button onclick="reload()" class="button">Play Again <i class="fas fa-redo"></i></button></h1>';
+                document.getElementById('game-info').innerHTML = '<h1>I won! Better luck next time!<br/><button onclick="reload()" class="button">Play Again <i class="fas fa-redo"></i></button></h1>';
             }
         }
         else if (winner() === computer) {
-            document.getElementById('game-info').innerHTML = '<h1>Computer won! Better luck next time!<br/><button onclick="reload()" class="button">Play Again <i class="fas fa-redo"></i></button></h1>';
+            document.getElementById('game-info').innerHTML = '<h1>I won! Better luck next time!<br/><button onclick="reload()" class="button">Play Again <i class="fas fa-redo"></i></button></h1>';
         } else if (winner() === human) {
             document.getElementById('game-info').innerHTML = '<h1>You won! Well done!<br/><button onclick="reload()" class="button">Play Again <i class="fas fa-redo"></i></button></h1>';
         } else {
-            document.getElementById('game-info').innerHTML = '<h1>Tie! Well played!<br/><button onclick="reload()" class="button">Play Again <i class="fas fa-redo"></i></button></h1>';
+            document.getElementById('game-info').innerHTML = '<h1>Draw! Well played!<br/><button onclick="reload()" class="button">Play Again <i class="fas fa-redo"></i></button></h1>';
         }
     }
 }
@@ -82,7 +82,7 @@ function taken(id) {
         (takenBoard[id] == human) ||
         (takenBoard[id] == computer)
     ) {
-        document.getElementById('game-info').innerHTML = '<h1>That space is taken, you cannot go there!</h1>';
+        document.getElementById('game-info').innerHTML = '<h1>That space is taken, please choose a free space.</h1>';
         return true;
     } else {
         return false;

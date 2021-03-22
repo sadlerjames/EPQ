@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimax</title>
+    <title>Tic-Tac-Toe</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
         integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
@@ -13,7 +13,8 @@
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
         body {
             height: 100%;
@@ -27,6 +28,14 @@
             text-align: center;
             padding: 15px;
             font-size: 45px;
+
+        }
+        
+        .sub-title {
+            text-align: center;
+            padding: 15px;
+            font-size: 28px;
+            font-family: 'Roboto', sans-serif;
         }
 
         .mainTable {
@@ -72,24 +81,7 @@
             text-align: center;
             font-size: 15px;
             line-height: 350%;
-        }
-
-        .instuctions {
-            position: absolute;
-            left: 70%;
-            top: 10%;
-
-        }
-
-        .instuctions,
-        h1 {
-            font-size: 30px;
-        }
-
-        .instuctions,
-        li {
-            font-size: 22px;
-            padding: 4px 0px;
+            font-family: 'Roboto', sans-serif;
         }
 
         .button {
@@ -104,6 +96,7 @@
             margin: 4px 2px;
             cursor: pointer;
             border-radius: 12px;
+            font-family: 'Roboto', sans-serif;
         }
 
         @media (max-width: 800px) {
@@ -122,21 +115,14 @@
 
             }
 
-            .instuctions {
-                position: relative;
-                width: 100%;
-                left: 0;
-                text-align: center;
-                top: 0%;
-
-            }
-        }
+       }
     </style>
 
 </head>
 
 <body>
-    <div class="title">Tik-Tac-Toe</div>
+    <div class="title">Tic-Tac-Toe</div>
+    <div class="sub-title">Can you beat me? You go first!</div>
     <div class="mainTable">
         <table>
             <tr>
@@ -160,16 +146,6 @@
 
 
     <div id="game-info"></div>
-
-    <div class="instuctions">
-        <h1>How to play:</h1>
-        <ul>
-            <li>You go first</li>
-            <li>Choose a square to go and click on it</li>
-            <li>The computer will then make it's go</li>
-        </ul>
-    </div>
-
 
     <script src="index.js"></script>
     <script src="minimax.js"></script>
